@@ -21,7 +21,7 @@ export const createTask = async (req: Request, res: Response) => {
             }
         });
 
-        res.status(201).json(task);
+        res.status(201).json({id: task.id, task});
     } catch (error) {
         console.log(error);
         res.status(500).json({message:'Server error'});
