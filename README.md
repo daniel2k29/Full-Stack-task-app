@@ -5,13 +5,18 @@ A simple task management web application built with **React (Vite + Tailwind CSS
 ---
 
 ## Table of Contents
-1. [Features](#features)  
-2. [Tech Stack](#tech-stack)  
-3. [Setup Instructions](#setup-instructions)  
-4. [Environment Variables](#environment-variables)  
-5. [API Documentation](#api-documentation)  
-6. [Testing](#testing)  
-7. [Docker & DevOps](#docker--devops)  
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Setup Instructions](#setup-instructions)
+    1. [Prerequisites](#prerequisites)
+    2. [Clone the repository](#clone-the-repository)
+    3. [Backend setup](#backend-setup)
+    4. [Frontend setup](#frontend-setup)
+    5. [Run with Docker](#run-with-docker)
+4. [Environment Variables](#environment-variables)
+5. [API Documentation](#api-documentation)
+6. [Testing](#testing)
+7. [Docker & DevOps](#docker--devops)
 
 ---
 
@@ -46,35 +51,44 @@ A simple task management web application built with **React (Vite + Tailwind CSS
 git clone https://github.com/daniel2k29/Full-Stack-task-app.git
 cd Full-Stack-1
 
----
 
-### Backend setup
+
+## Backend setup
 cd backend
 npm install
 cp .env.example .env  # create your environment file
 # Fill in your DATABASE_URL and JWT_SECRET
 npm run dev
 
-### Frontend setup
+## Frontend setup
 cd frontend
 npm install
 npm run dev
 
-### Run with Docker 
--stop running backend and frontend server before proceeding with 
+## Run with Docker 
+- Stop running backend and frontend server before proceeding with 
 docker compose up --build
 
 ---
 
-### API Documentation
-## Auth Endpoints
+## Environment Variables
+
+Create a `.env` file in the `backend` directory with the following variables:
+
+- `DATABASE_URL`: Your PostgreSQL database connection string (e.g., `postgresql://username:password@localhost:5432/database_name`)
+- `JWT_SECRET`: A secret key for signing JWT tokens (use a long, random string)
+
+---
+
+## API Documentation
+### Auth Endpoints
 
 | Method | Endpoint       | Auth | Body                        | Response        |
 | ------ | -------------- | ---- | --------------------------- | --------------- |
 | POST   | /auth/register | No   | `{ name, email, password }` | `{ id, token }` |
 | POST   | /auth/login    | No   | `{ email, password }`       | `{ token }`     |
 
-## Task Endpoints
+### Task Endpoints
 | Method | Endpoint   | Auth | Body                                   | Response                                 |
 | ------ | ---------- | ---- | -------------------------------------- | ---------------------------------------- |
 | POST   | /tasks     | Yes  | `{ title, description }`               | Created task object `{ id, title, ... }` |
@@ -85,14 +99,14 @@ docker compose up --build
 
 ---
 
-### Testing
+## Testing
 
 cd backend
 npm run test
 
 --- 
 
-### Docker and devops
+## Docker & DevOps
 
 ### Docker Setup
 
