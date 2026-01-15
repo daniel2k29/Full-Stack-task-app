@@ -27,7 +27,7 @@ app.use('/tasks', taskRoutes);
 app.get('/profile', authMiddleware, async (req, res) => {
   res.json({
     message: 'Protected data',
-    userId: (req as any).userId });
+    userId: req.userId });
 });
 
 

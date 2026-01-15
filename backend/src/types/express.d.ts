@@ -1,5 +1,9 @@
-import { Request } from "express";
+import { JwtPayload } from "jsonwebtoken";
 
-export interface AuthenticatedRequest extends Request {
-  userId: string;
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: string;
+    }
+  }
 }

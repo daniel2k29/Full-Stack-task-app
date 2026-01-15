@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import Header from "../components/Header";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,7 +39,10 @@ export default function Tasks() {
         title: newTitle,
         description: newDescription,
       });
-      setTasks([...tasks, res.data]);
+
+      const createdTask = res.data.task;
+
+      setTasks(prevTasks => [...prevTasks, createdTask]);
       setNewTitle("");
       setNewDescription("");
     } catch (err: any) {

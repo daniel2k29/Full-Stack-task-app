@@ -8,7 +8,7 @@ type TaskParams = {
 export const createTask = async (req: Request, res: Response) => {
     try {
         const {title, description} = req.body;
-        const userId = (req as any).userId;
+        const userId = req.userId;
 
         if (!userId) {
             return res.status(401).json({ message: 'Unauthorized' });
@@ -21,7 +21,7 @@ export const createTask = async (req: Request, res: Response) => {
             }
         });
 
-        res.status(201).json({id: task.id, task});
+        res.status(201).json({task});
     } catch (error) {
         console.log(error);
         res.status(500).json({message:'Server error'});
@@ -30,11 +30,13 @@ export const createTask = async (req: Request, res: Response) => {
 
 export const getTask = async (req: Request, res: Response) => {
     try {
-       const userId = (req as any).userId;
+       
+        if (!req.userId) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
 
-        
         const task = await prisma.task.findMany({
-            where: {userId},
+            where: {userId: req.userId},
             orderBy: {createdAt: "desc"}
         });
 
@@ -49,7 +51,7 @@ export const updateTask = async (req: Request<TaskParams>, res: Response) => {
     try {
         const {id} = req.params;
         const {title, description, completed} = req.body;
-        const userId = (req as any).userId;
+        const userId = req.userId;
 
         if (!userId) {
             return res.status(401).json({ message: 'Unauthorized' });
@@ -79,7 +81,7 @@ export const updateTask = async (req: Request<TaskParams>, res: Response) => {
 export const deleteTask = async (req: Request<TaskParams>, res: Response) => {
     try {
         const {id} = req.params;
-        const userId = (req as any).userId;
+        const userId = req.userId;
 
         const task = await prisma.task.findUnique({ where: { id } });
 
