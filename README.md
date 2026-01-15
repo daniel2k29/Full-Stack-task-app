@@ -9,10 +9,9 @@ A simple task management web application built with **React (Vite + Tailwind CSS
 2. [Tech Stack](#tech-stack)
 3. [Setup Instructions](#setup-instructions)
     1. [Prerequisites](#prerequisites)
-    2. [Clone the repository](#clone-the-repository)
-    3. [Backend setup](#backend-setup)
-    4. [Frontend setup](#frontend-setup)
-    5. [Run with Docker](#run-with-docker)
+    2. [Backend setup](#backend-setup)
+    3. [Frontend setup](#frontend-setup)
+    4. [Run with Docker](#run-with-docker)
 4. [Environment Variables](#environment-variables)
 5. [API Documentation](#api-documentation)
 6. [Testing](#testing)
@@ -45,27 +44,22 @@ A simple task management web application built with **React (Vite + Tailwind CSS
 - Node.js >= 20.19 (or 22+)  
 - PostgreSQL installed and running  
 - npm or yarn  
-
-### Clone the repository
-```bash
-git clone https://github.com/daniel2k29/Full-Stack-task-app.git
-cd Full-Stack-1
+-git clone https://github.com/daniel2k29/Full-Stack-task-app.git
 
 
-
-## Backend setup
+### Backend setup
 cd backend
 npm install
 cp .env.example .env  # create your environment file
 # Fill in your DATABASE_URL and JWT_SECRET
 npm run dev
 
-## Frontend setup
+### Frontend setup
 cd frontend
 npm install
 npm run dev
 
-## Run with Docker 
+### Run with Docker 
 - Stop running backend and frontend server before proceeding with 
 docker compose up --build
 
