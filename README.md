@@ -44,7 +44,7 @@ A simple task management web application built with **React (Vite + Tailwind CSS
 - Node.js >= 20.19 (or 22+)  
 - PostgreSQL installed and running  
 - npm or yarn  
--git clone https://github.com/daniel2k29/Full-Stack-task-app.git
+- git clone https://github.com/daniel2k29/Full-Stack-task-app.git
 
 
 ### Backend setup
